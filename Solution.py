@@ -83,8 +83,8 @@ def totalRainfallFtn(county_string):
     max_total_rainfall = np.max(data[:, 2])
     average_rainfall = np.average(data[:, 2])
     # outputs the answers to 2 decimal space
-    print("\n\n" + county_string + ": Max Total Rainfall recorded = " + "%.2f" % max_total_rainfall + "mm")
-    print(county_string + ": Average Total Rainfall recorded = " + "%.2f" % average_rainfall + "mm")
+    print("\n\n" + county_string + ": Max total rainfall recorded = " + "%.2f" % max_total_rainfall + "mm")
+    print(county_string + ": Average total rainfall recorded = " + "%.2f" % average_rainfall + "mm")
 
 
 # ===================================================================================
