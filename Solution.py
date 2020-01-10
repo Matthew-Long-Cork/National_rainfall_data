@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov  7 20:44:44 2018
+Created on Wed Nov 7 20:44:44 2018
 
 @author: R00050477
 """
@@ -23,13 +23,13 @@ def primaryMenu():
 
     while True:
         try:
-            selectedFunction = int(input("Please select one of the above options (1-6): "))
+            selected_function = int(input("Please select one of the above options (1-6): "))
         except ValueError:
             print("Must be 1-6")
-            selectedFunction = 0
+            selected_function = 0
 
-        if (selectedFunction > 0) or (selectedFunction < 6):
-            return selectedFunction
+        if (selected_function > 0) or (selected_function < 6):
+            return selected_function
             break
         else:
             print("This is not a valid choice")
@@ -47,29 +47,29 @@ def secondaryMenu():
 
     while True:
         try:
-            selectedCounty = int(input("Please select a location (1-5): "))
+            selected_county = int(input("Please select a location (1-5): "))
         except ValueError:
             print("Must be 1-5")
-            selectedCounty = 0
+            selected_county = 0
 
-        if (selectedCounty > 0) or (selectedCounty < 6):
-            return selectedCounty
+        if (selected_county > 0) or (selected_county < 6):
+            return selected_county
             break
         else:
             print("This is not a valid choice")
 
 
-def convert(selectedOption):
+def convert(selected_option):
 
-    if selectedOption == 1:
+    if selected_option == 1:
         county = "Cork"
-    if selectedOption == 2:
+    if selected_option == 2:
         county = "Belfast"
-    if selectedOption == 3:
+    if selected_option == 3:
         county = "Dublin"
-    if selectedOption == 4:
+    if selected_option == 4:
         county = "Galway"
-    if selectedOption == 4:
+    if selected_option == 4:
         county = "Limerick"
 
     return county
@@ -77,41 +77,40 @@ def convert(selectedOption):
 # ===================================================================================
 #               FUNCTION ONE
 # ===================================================================================
-def totalRainfallFtn(countyString):
+def totalRainfallFtn(county_string):
 
-    data = np.genfromtxt(countyString + 'Rainfall.txt', dtype=float, delimiter=' ')
-    maxTotalRainfall = np.max(data[:, 2])
-    averageRainfall = np.average(data[:, 2])
-    # ouputs the answers to 2 decimal space
-    print("\n\n" + countyString + ": Max Total Rainfall = " + "%.2f" % maxTotalRainfall + "mm")
-    print(countyString + ": Average Total Rainfall = " + "%.2f" % averageRainfall + "mm")
+    data = np.genfromtxt(county_string + 'Rainfall.txt', dtype=float, delimiter=' ')
+    max_total_rainfall = np.max(data[:, 2])
+    average_rainfall = np.average(data[:, 2])
+    # outputs the answers to 2 decimal space
+    print("\n\n" + county_string + ": Max Total Rainfall recorded = " + "%.2f" % max_total_rainfall + "mm")
+    print(county_string + ": Average Total Rainfall recorded = " + "%.2f" % average_rainfall + "mm")
 
 
 # ===================================================================================
 #               FUNCTION TWO
 # ===================================================================================
-def mostRainfallInADayFtn(countyString):
+def mostRainfallInADayFtn(county_string):
 
-    data = np.genfromtxt(countyString + 'Rainfall.txt', dtype=float, delimiter=' ')
-    maxRainfallInADay = np.max(data[:, 3])
-    averageMostRainfall = np.average(data[:, 3])
+    data = np.genfromtxt(county_string + 'Rainfall.txt', dtype=float, delimiter=' ')
+    max_rainfall_in_a_day = np.max(data[:, 3])
+    average_most_rainfall = np.average(data[:, 3])
     # outputs the answers to 2 decimal space
-    print("\n\n" + countyString + ": Max Rainfall In a Day= " + "%.2f" % maxRainfallInADay + "mm")
-    print(countyString + ": Average Total Rainfall In a Day = " + "%.2f" % averageMostRainfall + "mm")
+    print("\n\n" + county_string + ": Max rainfall in a day= " + "%.2f" % max_rainfall_in_a_day + "mm")
+    print(county_string + ": Average total rainfall in a day = " + "%.2f" % average_most_rainfall + "mm")
 
 
 # ===================================================================================
 #               FUNCTION THREE
 # ===================================================================================
-def numberOfRainyDaysFtn(countyString):
+def numberOfRainyDaysFtn(county_string):
 
-    data = np.genfromtxt(countyString + 'Rainfall.txt', dtype=float, delimiter=' ')
-    maxNumberofRainyDay = np.max(data[:, 4])
-    averageNumberofRainyDay = np.average(data[:, 4])
+    data = np.genfromtxt(county_string + 'Rainfall.txt', dtype=float, delimiter=' ')
+    max_umber_of_rainy_day = np.max(data[:, 4])
+    average_number_of_rainy_day = np.average(data[:, 4])
     # outputs the answers
-    print("\n\n" + countyString + ": Max Number of Rain days " + str(maxNumberofRainyDay))
-    print(countyString + ":  Average Number of Rain days " + str(averageNumberofRainyDay))
-
+    print("\n\n" + county_string + ": Max number of rainy days = " + "%.0f" % max_umber_of_rainy_day)
+    print(county_string + ": Average number of rainy days = " + "%.2f" % average_number_of_rainy_day)
 
 # ===================================================================================
 #               FUNCTION FOUR
@@ -143,29 +142,29 @@ def percentages():
     total = 0
     number = 0
 
-    inputValue = int(input("\nPlease enter maximum threshold value for number of rain days: "))
+    input_value = int(input("\nPlease enter maximum threshold value for number of rain days: "))
 
-    print("\nThe following are the percentage of rain days less than or equal to " + str(inputValue) + "\n")
+    print("\nThe following are the percentage of rain days less than or equal to " + str(input_value) + "\n")
 
     # loops through the files and opens them
     for i in cities:
         number += 1
-        fileObj = open(i + 'Rainfall.txt')
+        file_obj = open(i + 'Rainfall.txt')
         # reads the lines and while true takes the content of that line
         while True:
-            lineContent = fileObj.readline()
-            if ("" == lineContent):
+            line_content = file_obj.readline()
+            if ("" == line_content):
                 "file finished"
                 break;
 
             # splits up the content of the line and stores the value at the fourth index.
             # then converts the string to an int to be checked
-            fileValue = lineContent.split(" ")
-            currentValueString = fileValue[4]
-            currentValueInt = int(currentValueString)
+            file_value = line_content.split(" ")
+            current_value_string = file_value[4]
+            current_value_int = int(current_value_string)
             total += 1
-            #compares the input to the current data and keeps count of valid results
-            if currentValueInt <= inputValue:
+            # compares the input to the current data and keeps count of valid results
+            if current_value_int <= input_value:
                 count += 1
 
         # calculates the percentage to be printed
@@ -174,22 +173,23 @@ def percentages():
         # prints results
         print(str(number) + ". " + i + " " + "%.2f" % result + "%\n")
 
+
 def main():
 
-    selectedFunction = 0
+    selected_function = 0
 
-    while selectedFunction != 6:
+    while selected_function != 6:
 
         # ask for function input and validate it
         # =================================================================
-        selectedFunction = primaryMenu()
-        while selectedFunction not in range(1, 7):
+        selected_function = primaryMenu()
+        while selected_function not in range(1, 7):
             print("\n\nInvalid option! Select again:")
-            selectedFunction = primaryMenu()
+            selected_function = primaryMenu()
 
         # if choice is 1 2 or 3 ask for county input and validate it
         # =================================================================
-        if selectedFunction == 1 or selectedFunction == 2 or selectedFunction == 3:
+        if selected_function == 1 or selected_function == 2 or selected_function == 3:
 
             option = secondaryMenu()
             while option not in range(1, 6):
@@ -198,30 +198,31 @@ def main():
 
             # convert the selectedOption (number) into county name
             # =================================================================
-            countyString = convert(option)
+            county_string = convert(option)
             # now complete the task
             # =================================================================
-            if selectedFunction == 1:
-                totalRainfallFtn(countyString)
+            if selected_function == 1:
+                totalRainfallFtn(county_string)
             # =================================================================
-            if selectedFunction == 2:
-                mostRainfallInADayFtn(countyString)
-             # =================================================================
-            if selectedFunction == 3:
-               numberOfRainyDaysFtn(countyString)
+            if selected_function == 2:
+                mostRainfallInADayFtn(county_string)
+            # =================================================================
+            if selected_function == 3:
+                numberOfRainyDaysFtn(county_string)
         # =================================================================
         # if choice is 4
-        if selectedFunction == 4:
+        if selected_function == 4:
             wettestLocation()
         # =================================================================
         # if choice is 5
-        if selectedFunction == 5:
+        if selected_function == 5:
             percentages()
         # =================================================================
         # if choice is 6 then exit program
-        if selectedFunction == 6:
+        if selected_function == 6:
             print("\n\nGood bye... ")
             exit()
+
 
 main()
 
